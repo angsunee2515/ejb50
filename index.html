@@ -211,7 +211,7 @@ $('saveBtn').onclick = async ()=>{
     if(r.ok){
       if(cur==='park') local.last.park = {note:(local.notes[cur]||'').trim(), thumb:photo[cur].thumb, when:new Date().toLocaleString('th-TH',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})};
       local.ticks[cur]=[]; local.notes[cur]=''; delete photo[cur]; saveLocal();
-      showToast('บันทึกแล้ว เวลา '+r.time+' น. ออกได้เลยค่ะ');
+      showToast('บันทึกแล้ว เวลา '+r.time+' น. ออกได้เลยค่ะ'); setTimeout(()=>{ try{ if(liff.isInClient()) liff.closeWindow(); }catch(e){} }, 2000);
     } else if(r.error==='auth'){
       showToast('ต้องยืนยันตัวตนใหม่ กรุณาปิดแล้วเปิดแอปจาก LINE อีกครั้งค่ะ','warn');
     } else {
